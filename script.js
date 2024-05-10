@@ -4,6 +4,7 @@ const nextButton = document.getElementById("nextButton");
 const song = document.getElementById("song");
 const songTitle = document.getElementById("songTitle");
 const songCover = document.getElementById("songCover");
+const cover = document.getElementById("cover");
 
 const musics = [
   "Bury The Light - Casey Edward.mp3",
@@ -30,6 +31,9 @@ const musicTitles = [
 ];
 
 let order = 0;
+let rotation = null;
+let angle = 0;
+
 songTitleHandler();
 changeCover();
 
@@ -40,11 +44,13 @@ playButton.addEventListener("click", (event) => {
     playIcon.classList.remove("fa-play");
     playIcon.classList.add("fa-pause");
     playButton.style.paddingLeft = "0";
+    startRotate();
   } else if (playIcon.classList.contains("fa-pause")) {
     song.pause();
     playIcon.classList.remove("fa-pause");
     playIcon.classList.add("fa-play");
     playButton.style.paddingLeft = "5px";
+    stopRotate();
   }
 });
 
@@ -57,6 +63,10 @@ nextButton.addEventListener("click", (event) => {
   } else {
     order = 0;
   }
+
+  stopRotate();
+  angle = 0;
+  cover.style.transform = `rotate(${angle}deg)`;
 
   musicHandler();
   songTitleHandler();
@@ -72,6 +82,10 @@ prevButton.addEventListener("click", (event) => {
   } else {
     order = musics.length - 1;
   }
+
+  stopRotate();
+  angle = 0;
+  cover.style.transform = `rotate(${angle}deg)`;
 
   musicHandler();
   songTitleHandler();
@@ -92,4 +106,24 @@ function musicHandler() {
   const playIcon = playButton.getElementsByTagName("i")[0];
   playIcon.classList.remove("fa-pause");
   playIcon.classList.add("fa-play");
+}
+
+function rotateCover() {
+  angle -= 0.9;
+  cover.style.transform = `rotate(${angle}deg)`;
+
+  rotation = requestAnimationFrame(rotateCover);
+}
+
+function startRotate() {
+  if (!rotation) {
+    rotation = requestAnimationFrame(rotateCover);
+  }
+}
+
+function stopRotate() {
+  if (rotation) {
+    cancelAnimationFrame(rotation);
+    rotation = null;
+  }
 }
