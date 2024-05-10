@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+:root {
+  --dimension: 350px;
+  --coverDimension: calc(var(--dimension) / 1.7);
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: rgb(37, 142, 83);
+  background: linear-gradient(
+    90deg,
+    rgba(37, 142, 83, 1) 0%,
+    rgba(114, 237, 184, 1) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cover-wrapper {
+  width: var(--dimension);
+  height: var(--dimension);
+  border-radius: 8px;
+
+  /* Glassmorphism effect */
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.21);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.9px);
+  -webkit-backdrop-filter: blur(5.9px);
+  border: 1px solid rgba(255, 255, 255, 0.31);
+  /* Glassmorphism effect */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 35px;
+}
+
+.cover {
+  width: var(--coverDimension);
+  height: var(--coverDimension);
+  border-radius: 50%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.cover-wrapper h5 {
+  text-align: center;
+  font-size: 1.7rem;
+  color: rgb(250, 250, 250);
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.cover .hole {
+  width: 55px;
+  height: 55px;
+  background: red;
+  position: absolute;
+  top: 80px;
+  left: 78px;
+  border-radius: 50%;
+
+  /* Glassmorphism effect */
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.21);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.9px);
+  -webkit-backdrop-filter: blur(5.9px);
+  border: 1px solid rgba(255, 255, 255, 0.31);
+  /* Glassmorphism effect */
+}
+
+.navigation-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+
+  /* Glassmorphism effect */
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.21);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.9px);
+  -webkit-backdrop-filter: blur(5.9px);
+  border: 1px solid rgba(255, 255, 255, 0.31);
+  /* Glassmorphism effect */
+  transition: transform 0.3s;
+}
+
+.navigation-button:hover {
+  transform: scale(1.5);
+}
+
+.navigation-button i {
+  font-size: 1.5rem;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+.navigation-button:nth-child(2) {
+  margin: 0 50px;
+  padding-left: 5px;
+}
